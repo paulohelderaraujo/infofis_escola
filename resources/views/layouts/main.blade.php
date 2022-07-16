@@ -47,13 +47,19 @@
                 </div>
             </nav>
         </header>
-
-
-
-    @yield('content')
+    <main>
+        <div class="container-fluid">
+        <div class="row">
+        @if(session('msg'))
+            <p class="msg"> {{ session('msg') }}</p>
+        @endif
+            @yield('content')
+         </div>
+        </div>
+    </main>
 
     <footer>
-        <p>Infofis Tecnologia e Serviços &copy; 2020</p>
+        <p>Infofis Tecnologia &copy; 2020</p>
 
     </footer>
     </body>

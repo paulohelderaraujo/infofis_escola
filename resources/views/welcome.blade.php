@@ -4,25 +4,29 @@
 
 @section('content')
 
-        <h1>Infofis Cursos</h1>
-        <img src="/img/banner.png" alt="Banner">
-        @if (10 > 5)
-            <p>A condição é true</p>
-        @endif
+<div id="search-container" class="col-md-12">
+    <h1>Busque uma aula</h1>
+    <form action="">
+        <input type="text" id="search" name="search" class="form-control" placeholder="Procurar...">
+    </form>
+</div>
 
-        <p> {{ $nome }} </p>
+<div id="aulas-container" Class="col-md-12">
+    <h2>Próximas Aulas</h2>
+    <p class="subtitle">Veja as aulas dos próximos dias</p>
+    <div id="cards-container" class="row">
+        @foreach ($aulas as $aulas)
+        <div class="card col-md-3">
+            <img src="/img/aulas/{{ $aulas->image }}" alt="{{ $aulas->title}}">
+            <div class="card-body">
+            <p class="card-date">20/02/2020</p>
+            <h5 class="card-title">{{ $aulas->title}}</h5>
+            <p class="card-participants">X Participantes</p>
+            <a href="/aulas/{{ $aulas->id}}" class="btn btn-primary">Saber Mais</a>
+            </div>
+        </div>
+        @endforeach
 
-        @if($nome == "Terra")
-            <p>O nome é Terra</p>
-
-        @elseif($nome == "Paulo Bala")
-            <p>O nome é {{ $nome}} e ele tem {{$idade}} anos, e trabalha como {{ $profissao }}</p>
-        @else
-            <p>O nome não é Pedro</p>
-        @endif
-
-        @for ($i = 0; $i < count ($arr); $i++)
-            <p>{{ $arr[$i] }}</p>
-        @endfor
-
-        @endsection
+    </div>
+</div>
+@endsection

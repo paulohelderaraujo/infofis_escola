@@ -18,15 +18,8 @@ use App\Http\Controllers\ContatoController;
 
 Route::get('/', [AulaController::class, 'index']);
 Route::get('/aulas/create', [AulaController::class, 'create']);
-Route::get('/forms/contato', [ContatoController::class, 'create']);
+Route::get('/aulas/{$id}', [AulaController::class, 'show']);
+Route::post('/aulas', [AulaController::class, 'store']);
 
-Route::get('produtos', function () {
 
-    $busca = request('search');
 
-    return view('produtos', ['busca' => $busca]);
-});
-
-Route::get('/produtos_teste/{id?}', function ($id = null) {
-    return view('produtos', ['id' => $id]);
-});
